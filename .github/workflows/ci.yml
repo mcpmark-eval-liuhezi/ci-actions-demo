@@ -1,0 +1,27 @@
+# ci-actions-demo CI workflow.
+# Modeled on the Node.js CI starter published by the actions org:
+# https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+
+    - name: Report Node.js version
+      run: node --version
